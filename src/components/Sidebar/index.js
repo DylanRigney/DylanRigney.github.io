@@ -52,11 +52,6 @@ const Sidebar = () => (
                     <FontAwesomeIcon icon={faGithub} color="#4d4d43"/>
                 </a>
             </li>
-            <li>
-                <a target="_blank" rel='noreferrer' href="https://www.linkedin.com/in/dylan-rigney/">
-                    <FontAwesomeIcon icon={faLinkedin} color="#4d4d43"/>
-                </a>
-            </li>
         </ul>
     
     </div>
