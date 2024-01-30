@@ -8,7 +8,10 @@ import { HiDownload } from "react-icons/hi";
 
 export default function Intro() {
   return (
-    <section id ="home" className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]">
+    <section
+      id="home"
+      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+    >
       <div className="flex items-center justify-center">
         <div className="relative">
           <motion.div
@@ -38,7 +41,7 @@ export default function Intro() {
         animate={{ opacity: 1, y: 0 }}
       >
         <span className="">Hi,</span> my name is{" "}
-        <span className="font-bold">Dylan</span>. I'm a{" "}
+        <span className="font-bold">Dylan</span>. I&apos;m a{" "}
         <span className="font-bold">full-stack developer</span> with a{" "}
         <span className="italic">passion for building </span>
         {}
