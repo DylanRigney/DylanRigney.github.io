@@ -44,7 +44,7 @@ export const experiencesData = [
     title: "Graduated bootcamp",
     location: "Tacoma, Wa",
     description:
-      "I graduated as one of the top students in my cohort after 3 months of intensive training. Because of my success in the bootcamp, I was then hired directly as a full-stack developer and a technical instructor by the company that held the bootcamp.",
+      "I graduated as one of the top students in my cohort after 3 months of intensive training. Because of my success in the bootcamp, I was then hired directly as a full-stack developer and Technical Instructor by the company that held the bootcamp.",
     icon: React.createElement(LuGraduationCap),
     date: "2021",
   },
@@ -52,7 +52,7 @@ export const experiencesData = [
     title: "Software Developer / Technical Instructor",
     location: "Reston, Va",
     description:
-      "I worked as a developer and Technical Instructor for 2 years. Participating in a highly collaborative, agile environment further improving my own development skills as well as teaching others to become developers. I'm proud to say that many of the people I instructed are now successful full-stack developers, working in the industry.",
+      "Employed as a full-stack developer and Technical Instructor in a highly collaborative, agile environment; gaining experience as a developer as well as teaching others to become developers. I'm proud to say that many of the people I instructed are now successful full-stack developers.",
     icon: React.createElement(CgWorkAlt),
     date: "2021 - 2023",
   },
@@ -60,7 +60,7 @@ export const experiencesData = [
     title: "Full-Stack Developer",
     location: "Reston, Va",
     description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript andTailwind. I'm open to full-time opportunities.",
+      "I'm now a full-stack developer working as a freelancer. My stack includes Angular, Java, Spring and PostgreSQL. I'm open to full-time opportunities.",
     icon: React.createElement(FaReact),
     date: "2023 - present",
   },
