@@ -75,7 +75,7 @@ export const projectsData = [
     imageUrl: etchedgoldImg,
   },
   {
-    title: "Tuition Reimbursement Management System",
+    title: "Tuition Repayment Management System",
     description:
       "Job board for remote developer jobs. I was the front-end developer. It has features like filtering, sorting and pagination.",
     tags: ["React", "TypeScript", "Next.js", "Tailwind", "Redux"],

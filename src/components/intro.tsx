@@ -54,7 +54,7 @@ export default function Intro() {
         <span className="font-bold">apps</span> and{" "}
         <span className="font-bold">AI</span>. My focus is{" "}
         <span className="font-bold">Java</span> along with{" "}
-        <span className="font-bold">Python, Angular, React and SQL</span>
+        <span className="font-bold">Angular, and SQL</span>
       </motion.p>
 
       <motion.div
@@ -78,7 +78,7 @@ export default function Intro() {
         </Link> */}
 
         <a
-          className=" group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition-all cursor-pointer borderBlack"
+          className=" group bg-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition-all cursor-pointer borderBlack dark:bg-white/10"
           href="/RigneyResume.pdf"
           download={true}
         >
@@ -87,7 +87,7 @@ export default function Intro() {
         </a>
 
         <a
-          className="bg-white p-4 text-gray-700 flex items-center gap-2 rounded-full text-[1.25rem] focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition-all cursor-pointer borderBlack"
+          className="bg-white p-4 text-gray-700 flex items-center gap-2 rounded-full text-[1.25rem] focus:scale-[1.15] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition-all cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
           href="https://www.linkedin.com/in/dylan-rigney/"
           target="_blank"
         >
@@ -95,7 +95,7 @@ export default function Intro() {
         </a>
 
         <a
-          className="bg-white p-4 text-gray-700 flex items-center gap-2 rounded-full text-[1.25rem] focus:scale-[.115] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition-all cursor-pointer borderBlack"
+          className="bg-white p-4 text-gray-700 flex items-center gap-2 rounded-full text-[1.25rem] focus:scale-[.115] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition-all cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
           href="https://github.com/DylanRigney"
           target="_blank"
         >
