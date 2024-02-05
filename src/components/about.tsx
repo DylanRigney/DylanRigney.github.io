@@ -29,8 +29,8 @@ export default function About() {
         </span>
         Upon completion I was hired as a developer and technical instructor at
         Revature. I am currently working as a freelance full-stack developer.
-        </p>
-        <p className="mb-3">
+      </p>
+      <p className="mb-3">
         <span className="italic">My favorite part of programming</span> is
         learning a new skill or language and then using that knowledge to create
         something new. I <span className="underline">love</span> the feeling of
@@ -41,9 +41,9 @@ export default function About() {
           and Selenium
         </span>
         . I am also comfortable with TypeScript, Python and React. In addition,
-        I'm very <span className="italic">passionate</span> about{" "}
-        <span className="font-medium underline">Artificial Intelligence</span> and enjoy
-        building AI applications. Currently I am looking for a{" "}
+        I&apos;m very <span className="italic">passionate</span> about{" "}
+        <span className="font-medium underline">Artificial Intelligence</span>{" "}
+        and enjoy building AI applications. Currently I am looking for a{" "}
         <span className="font-medium">full-time position</span> as a software
         developer.
       </p>
