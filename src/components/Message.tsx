@@ -1,19 +1,26 @@
 import React from "react";
+import {MessageDto} from "../models/MessageDto";    
 type MessageProps = {
-  text: string;
-  isUser: boolean;
+  message: MessageDto
 };
 
-export default function Message({ text, isUser }: MessageProps) {
+export default function Message({ message }: MessageProps) {
   return (
-    <div style={{ textAlign: isUser ? "right" : "left", margin: "8px" }}>
+    <div style={{ textAlign: message.isUser ? "right" : "left", margin: "8px" }}>
       <div
         style={{
-          backgroundColor: isUser ? "DCF8C6" : "#b8e3fc",
-          padding: "8px",
+          color: message.isUser ? "#ffffff" : "#000000", 
+          backgroundColor: message.isUser ? "#1186fe" : "#eaeaea",
+          padding: "15px",
+          borderRadius: "8px",
         }}
       >
-        {text}
+        {message.content.split("\n").map((text, index) => (
+            <>
+              {text}
+              <br />
+            </>
+        ))}
       </div>
     </div>
   );
