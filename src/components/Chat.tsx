@@ -42,7 +42,7 @@ export default function Chat() {
       {error != null && (
         <div className="relative bg-red-500 text-white px-6 py-4 rounded-md-">
           <span className="block sm:inline">
-            Error: {(error as any).toString()}
+            Error: {(error as any).toString("Hello")}
           </span>
         </div>
       )}
