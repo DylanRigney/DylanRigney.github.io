@@ -1,32 +1,21 @@
 "use client";
+
 import { Message, experimental_useAssistant as useAssistant } from "ai/react";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-
-import {
-  TextField,
-  Button,
-  Container,
-  Grid,
-  LinearProgress,
-} from "@mui/material";
-import MessageComponent from "./Message";
-import OpenAI from "openai";
-import { MessageDto } from "@/models/MessageDto";
-
-const roleToColorMap: Record<Message['role'], string> = {
-  system: 'red',
-  user: 'black',
-  function: 'blue',
-  assistant: 'green',
-  data: 'orange',
-  tool: 'purple',
+const roleToColorMap: Record<Message["role"], string> = {
+  system: "red",
+  user: "black",
+  function: "blue",
+  tool: "purple",
+  assistant: "green",
+  data: "orange",
 };
 
 export default function Chat() {
   const { status, messages, input, submitMessage, handleInputChange, error } =
     useAssistant({
-      api: "../api/assistant",
+      api: "/api/assistant",
     });
 
   // When status changes to accepting messages, focus the input:
@@ -40,9 +29,9 @@ export default function Chat() {
   return (
     <div className="flex flex-col w-full max-w-md py-24 mx-auto stretch">
       {error != null && (
-        <div className="relative bg-red-500 text-white px-6 py-4 rounded-md-">
+        <div className="relative bg-red-500 text-white px-6 py-4 rounded-md">
           <span className="block sm:inline">
-            Error: {(error as any).toString("Hello")}
+            Error: {(error as any).toString("Does this make the error message change!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")}
           </span>
         </div>
       )}
@@ -55,7 +44,7 @@ export default function Chat() {
         >
           <strong>{`${m.role}: `}</strong>
           {m.role !== "data" && m.content}
-          {m.role !== "data" && (
+          {m.role === "data" && (
             <>
               {(m.data as any).description}
               <br />
@@ -76,10 +65,10 @@ export default function Chat() {
       <form onSubmit={submitMessage}>
         <input
           ref={inputRef}
-          disabled={status !== "awaiting_message"}
+          disabled={status !== 'awaiting_message'}
           className="fixed bottom-0 w-full max-w-md p-2 mb-8 border border-gray-300 rounded shadow-xl"
           value={input}
-          placeholder="What would you like to know?"
+          placeholder="What is the temperature in the living room?"
           onChange={handleInputChange}
         />
       </form>
