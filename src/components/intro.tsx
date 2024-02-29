@@ -7,6 +7,8 @@ import { BsArrowRight, BsGithub, BsLinkedin } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "../context/active-section-context";
+import AIChatButton from "./AIChatButton";
+
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
@@ -39,6 +41,11 @@ export default function Intro() {
           </motion.div>
           {/* <span className="absolute bottom-0 right-0   text-4xl">🐱‍👤</span> */}
         </div>
+      </div>
+      <AIChatButton />
+      <div
+      className="flex mb-11 ">
+    
       </div>
 
       <motion.p

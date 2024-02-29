@@ -57,6 +57,7 @@ export default function Header() {
               </Link>
             </motion.li>
           ))}
+          
         </ul>
       </nav>
     </header>
