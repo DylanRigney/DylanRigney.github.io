@@ -3,6 +3,8 @@ import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
 import etchedgoldImg from "../../public/Etched Gold.png";
+import TRMS from "../../public/TRMS repo.png";
+import assistantpic from "../../public/assistant.png";
 
 export const links = [
   {
@@ -68,24 +70,24 @@ export const experiencesData = [
 
 export const projectsData = [
   {
-    title: "AI Assistants",
+    title: "AI Assistant",
     description:
-      "I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.",
-    tags: ["React", "Next.js", "MongoDB", "Tailwind", "Prisma"],
-    imageUrl: etchedgoldImg,
+      "An AI powered agent designed to provide information about my professional experience to recruiters and hiring managers. It employs Retrieval Augmented Generation to allow the user to chat with my resume, cover letter and other relevant documents",
+    tags: ["React", "Next.js", "OpenAI Assistants API", "Vercel AI SDK", "Typescript"],
+    imageUrl: assistantpic,
   },
   {
-    title: "Tuition Repayment Management System",
+    title: "Tuition Reimbursement Management System",
     description:
-      "Job board for remote developer jobs. I was the front-end developer. It has features like filtering, sorting and pagination.",
-    tags: ["React", "TypeScript", "Next.js", "Tailwind", "Redux"],
-    imageUrl: etchedgoldImg,
+      "A full stack web app allowing employees to submit requests for tuition reimbursement. The system then routes the requests to the appropriate managers and assists in the approval process.",
+    tags: ["Java", "PostgreSQL", "Hibernate", "Junit", "Javalin", "Javascript"],
+    imageUrl: TRMS,
   },
   {
-    title: "TBD",
+    title: "Sage - Prediction Tracker",
     description:
-      "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
-    tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
+      "An AI powered app designed to help users make and track their predictions and improve their prediction accuracy. They can also compare their prediction accuracy against other users. Inspired by the book Super Forecasting.",
+    tags: ["React", "Next.js", "PostgreSQL", "Pinecone", "OpenAI Assistants API", "Typescript"],
     imageUrl: etchedgoldImg,
   },
 ] as const;

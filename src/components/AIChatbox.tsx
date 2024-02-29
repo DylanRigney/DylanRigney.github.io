@@ -65,12 +65,21 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
           {messages.map((message) => (
             <ChatMessage message={message} key={message.id} />
           ))}
+        {/* loading indicator */}
           {status === "in_progress" && (
             <div className="flex alignItems-center">
               <div className=" h-14 w-full max-w-md p-2 ml-4 mb-8 bg-gray-300 dark:bg-gray-600 rounded-lg animate-pulse" />
               <Bot size={30} className="h-14 ml-2 shrink-0" />
             </div>
           )}
+          { !error && messages.length === 0 && (
+              <div className="flex items-center h-full justify-center gap-3">
+                <Bot size={30}/>
+                An AI designed to help you get to know Dylan
+              </div>
+          )
+
+          }
         </div>
 
         <form onSubmit={submitMessage} className="m-3 flex gap-1 ">
@@ -80,7 +89,7 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
             disabled={status !== "awaiting_message"}
             className="shadow-xl h-11 text-sm "
             value={input}
-            placeholder="Do you have a question about Dylan?"
+            placeholder="What would you like to know?"
             onChange={handleInputChange}
           ></Input>
           <Button
@@ -96,6 +105,12 @@ export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
   );
 }
 
+/**
+ * Renders a chat message component based on the provided message object.
+ *
+ * @param {Message} message - the message object containing role, content, and data
+ * @return {JSX.Element} the rendered chat message component
+ */
 function ChatMessage({
   message: { role, content, data },
 }: {
