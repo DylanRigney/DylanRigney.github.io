@@ -1,47 +1,43 @@
-import { experimental_AssistantResponse } from "ai";
+import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || "",
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-export const runtime = "edge";
+const resumeText = `
+John Doe
+Software Engineer with 5+ years experience in full-stack web development, specializing in Next.js, React, and Node.js.
+Worked on AI-powered apps, cloud deployment, and large-scale web applications.
+Skills: JavaScript, TypeScript, React, Next.js, Node.js, OpenAI APIs, Vercel, SQL, NoSQL, REST, GraphQL.
+Experience: Company A - Senior Developer; Company B - Full-stack Engineer.
+Education: B.S. in Computer Science.
+`;
 
-export async function POST(req: Request) {
+// POST /api/assistant
+export async function POST(req: NextRequest) {
   try {
-    const { message, threadId } = (await req.json()) as {
-      message: string;
-      threadId?: string;
-    };
+    const { message, conversationId } = await req.json();
 
-    // Ensure threadId is always a string
-    const safeThreadId = threadId ?? "default-thread";
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o-mini", // or "gpt-4" if you have access
+      messages: [
+        {
+          role: "system",
+          content: `You are a helpful assistant. Answer questions using only the following resume as context:
 
-    return experimental_AssistantResponse(
-      { threadId: safeThreadId, messageId: "1" },
-      async ({ sendMessage }) => {
-        const stream = await openai.chat.completions.create({
-          model: "gpt-4o-mini",
-          stream: true,
-          messages: [{ role: "user", content: message }],
-        });
-
-        for await (const event of stream as AsyncIterable<any>) {
-          if (event.type === "message" && event.message?.content?.length) {
-            sendMessage({
-              id: "1",
-              role: event.message.role ?? "assistant",
-              content: [{ type: "text", text: event.message.content[0].text ?? "" }],
-            } as any);
-          }
-        }
-      }
-    );
-  } catch (err) {
-    console.error("POST /api/assistant failed:", err);
-    return new Response(JSON.stringify({ error: (err as Error).message }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
+${resumeText}`,
+        },
+        { role: "user", content: message },
+      ],
+      temperature: 0.2,
     });
+
+    const aiMessage = completion.choices[0]?.message?.content || "Sorry, I don't know.";
+
+    return NextResponse.json({ message: aiMessage });
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ message: "Error processing request." }, { status: 500 });
   }
 }
