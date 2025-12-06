@@ -1,151 +1,102 @@
-import { Message, experimental_useAssistant as useAssistant } from "ai/react";
-import { useEffect, useRef } from "react";
+import { useState, useRef, useEffect, FormEvent } from "react";
 import { cn } from "@/lib/utils";
-import { Bot, CircleUserRound, Trash, XCircle } from "lucide-react";
+import { Bot, CircleUserRound, XCircle } from "lucide-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
+
+type Message = {
+  id: string;
+  role: "user" | "assistant";
+  content: string;
+};
 
 type AIChatBoxProps = {
   open: boolean;
   onClose: () => void;
 };
 
-const roleToColorMap: Record<Message["role"], string> = {
-  system: "red",
-  user: "black",
-  function: "blue",
-  tool: "purple",
-  assistant: "black",
-  data: "orange",
-};
-
 export default function AIChatBox({ open, onClose }: AIChatBoxProps) {
-  const { status, messages, input, submitMessage, handleInputChange, error, } =
-    useAssistant({
-      api: "/api/assistant",
-    });
-
-  // When status changes to accepting messages, focus the input:
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-      if (scrollRef.current) {
-        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-      }
-  })
+    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight });
+  }, [messages]);
 
-  useEffect(() => {
-    if (status === "awaiting_message" || open ) {
-      inputRef.current?.focus();
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+
+    const userMessage: Message = {
+      id: crypto.randomUUID(),
+      role: "user",
+      content: input,
+    };
+
+    setMessages((prev) => [...prev, userMessage]);
+    setInput("");
+    setIsLoading(true);
+
+    try {
+      const res = await fetch("/api/assistant", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMessage.content }),
+      });
+
+      const data: Message = await res.json();
+      setMessages((prev) => [...prev, data]);
+    } catch (err) {
+      console.error(err);
+      setMessages((prev) => [
+        ...prev,
+        { id: crypto.randomUUID(), role: "assistant", content: "Error fetching response." },
+      ]);
+    } finally {
+      setIsLoading(false);
     }
-  }, [status, open]);
+  };
 
   return (
-    <div
-      className={cn(
-        "bottom-0 right-0 z-10 w-full max-w-[550px] p-1 xl:right-36",
-        open ? "fixed" : "hidden"
-      )}
-    >
-      {error != null && (
-        <div className="relative bg-red-500 text-white px-6 py-4 rounded-md">
-          <span className="block sm:inline">
-            Error: {(error as any).toString()}
-          </span>
-        </div>
-      )}
-
-      <button onClick={onClose} className="mb-1 ms-auto block">
-        <XCircle size={30} />
-      </button>
+    <div className={cn("bottom-0 right-0 z-10 w-full max-w-[550px] p-1 xl:right-36", open ? "fixed" : "hidden")}>
+      <button onClick={onClose} className="mb-1 ms-auto block"><XCircle size={30} /></button>
 
       <div className="flex h-[640px] flex-col rounded border bg-background shadow-xl">
         <div className="h-full mt-3 px-3 overflow-y-auto" ref={scrollRef}>
-          {messages.map((message) => (
-            <ChatMessage message={message} key={message.id} />
+          {messages.map((m) => (
+            <div key={m.id} className={cn("mb-3 flex items-center", m.role === "assistant" ? "justify-end ms-5" : "me-5justify-start")}>
+              {m.role !== "assistant" && <CircleUserRound size={30} className="mr-2 shrink-0" />}
+              <p className={cn("whitespace-pre-line rounded-md border px-3 py-2", m.role !== "assistant" ? "bg-background" : "bg-primary/90 text-primary-foreground")}>
+                {m.content}
+              </p>
+              {m.role === "assistant" && <Bot size={30} className="ml-2 shrink-0" />}
+            </div>
           ))}
-        {/* loading indicator */}
-          {status === "in_progress" && (
+          {isLoading && (
             <div className="flex alignItems-center">
-              <div className=" h-14 w-full max-w-md p-2 ml-4 mb-8 bg-gray-300 dark:bg-gray-600 rounded-lg animate-pulse" />
+              <div className="h-14 w-full max-w-md p-2 ml-4 mb-8 bg-gray-300 dark:bg-gray-600 rounded-lg animate-pulse" />
               <Bot size={30} className="h-14 ml-2 shrink-0" />
             </div>
           )}
-          { !error && messages.length === 0 && (
-              <div className="flex items-center h-full justify-center gap-3">
-                <Bot size={30}/>
-                An AI designed to help you get to know Dylan
-              </div>
-          )
-
-          }
         </div>
 
-        <form onSubmit={submitMessage} className="m-3 flex gap-1 ">
-          {/* <Button variant="outline" className="shrink-0 h-11 shadow-xl rounded-md" title="Clear chat" size="icon" type="button" onClick={() => messages = []}><Trash/></Button> */}
+        <form onSubmit={handleSubmit} className="m-3 flex gap-1">
           <Input
             ref={inputRef}
-            disabled={status !== "awaiting_message"}
-            className="shadow-xl h-11 text-sm "
+            disabled={isLoading}
+            className="shadow-xl h-11 text-sm"
             value={input}
             placeholder="What would you like to know?"
-            onChange={handleInputChange}
-          ></Input>
-          <Button
-            className="rounded-md text-md h-11 shadow-xl"
-            type="submit"
-            disabled={status !== "awaiting_message"}
-          >
+            onChange={(e) => setInput(e.target.value)}
+          />
+          <Button type="submit" disabled={isLoading} className="rounded-md text-md h-11 shadow-xl">
             Send
           </Button>
         </form>
       </div>
     </div>
-  );
-}
-
-/**
- * Renders a chat message component based on the provided message object.
- *
- * @param {Message} message - the message object containing role, content, and data
- * @return {JSX.Element} the rendered chat message component
- */
-function ChatMessage({
-  message: { role, content, data },
-}: {
-  message: Message;
-}) {
-  const isAIMessage = role === "data" || role === "assistant";
-  return (
-    <div
-      className={cn(
-        "mb-3 flex items-center",
-        isAIMessage ? "justify-end ms-5" : "me-5justify-start"
-      )}
-    >
-      {!isAIMessage && <CircleUserRound size={30} className="mr-2 shrink-0" />}
-      <p
-        className={cn(
-          "whitespace-pre-line rounded-md border px-3 py-2",
-          !isAIMessage ? "bg-background" : "bg-primary/90 text-primary-foreground"
-        )}
-      >
-        {content}
-      </p>
-      {isAIMessage && <Bot size={30} className="ml-2 shrink-0" />}
-    </div>
-    // <div >
-    //   {role !== "data" && content}
-    //   {role === "data" && (
-    //     <>
-    //       {(data as any).description}
-    //       <br />
-    //       <pre className={"bg-gray-200"}>{JSON.stringify(data, null, 2)}</pre>
-    //     </>
-    //   )}
-    //   <br />
-    //   <br />
-    // </div>
   );
 }

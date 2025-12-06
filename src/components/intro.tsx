@@ -48,21 +48,21 @@ export default function Intro() {
     
       </div>
 
-      <motion.p
-        className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
-        initial={{ opacity: 0, y: 100 }}
-        animate={{ opacity: 1, y: 0 }}
-      >
-        <span className="">Hi,</span> my name is{" "}
-        <span className="font-bold">Dylan</span>. I&apos;m a{" "}
-        <span className="font-bold">full-stack developer</span> with a{" "}
-        <span className="italic">passion for building </span>
-        {}
-        <span className="font-bold">apps</span> and{" "}
-        <span className="font-bold">AI</span>. My focus is{" "}
-        <span className="font-bold">Java</span> along with{" "}
-        <span className="font-bold">Angular, and SQL</span>
-      </motion.p>
+     <motion.p
+  className="mb-10 mt-4 px-4 text-2xl font-medium !leading-[1.5] sm:text-4xl"
+  initial={{ opacity: 0, y: 100 }}
+  animate={{ opacity: 1, y: 0 }}
+>
+  <span className="">Hi,</span> my name is{" "}
+  <span className="font-bold">Dylan</span>. I&apos;m a{" "}
+  <span className="font-bold">full-stack developer</span> and{" "}
+  <span className="italic">Computer Science student</span> building{" "}
+  <span className="font-bold">web apps</span> and{" "}
+  <span className="font-bold">AI-powered tools</span>. I work with{" "}
+  <span className="font-bold">React, Next.js, TypeScript, Java, Angular, and SQL</span>.
+</motion.p>
+
+
 
       <motion.div
         className="flex flex-col sm:flex-row items-center justify-center gap-2 px-4 text-lg font-medium"
