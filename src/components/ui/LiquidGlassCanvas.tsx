@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useMemo, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { MeshTransmissionMaterial, Environment } from '@react-three/drei';
 import * as THREE from 'three';
@@ -8,27 +8,18 @@ import { useWebGLContext } from '@/context/WebGLContext';
 
 // Simplex Noise Chunk for GLSL
 const noiseChunk = `
-// GLSL textureless classic 3D noise "cnoise",
-// with an RSL-style periodic variant "pnoise".
-// Author:  Stefan Gustavson (stefan.gustavson@liu.se)
-// Version: 2011-10-11
-//
-// Many thanks to Ian McEwan of Ashima Arts for the
-// ideas for permutation polynomials and a gradient
-// lookup that fits in a square.
-//
 vec4 mod289(vec4 x) { return x - floor(x * (1.0 / 289.0)) * 289.0; }
 vec4 permute(vec4 x) { return mod289(((x*34.0)+1.0)*x); }
 vec4 taylorInvSqrt(vec4 r) { return 1.79284291400159 - 0.85373472095314 * r; }
 vec3 fade(vec3 t) { return t*t*t*(t*(t*6.0-15.0)+10.0); }
 
 float cnoise(vec3 P) {
-  vec3 Pi0 = floor(P); // Integer part for indexing
-  vec3 Pi1 = Pi0 + vec3(1.0); // Integer part + 1
+  vec3 Pi0 = floor(P);
+  vec3 Pi1 = Pi0 + vec3(1.0);
   Pi0 = mod289(Pi0);
   Pi1 = mod289(Pi1);
-  vec3 Pf0 = fract(P); // Fractional part for interpolation
-  vec3 Pf1 = Pf0 - vec3(1.0); // Fractional part - 1.0
+  vec3 Pf0 = fract(P);
+  vec3 Pf1 = Pf0 - vec3(1.0);
   vec4 ix = vec4(Pi0.x, Pi1.x, Pi0.x, Pi1.x);
   vec4 iy = vec4(Pi0.yy, Pi1.yy);
   vec4 iz0 = Pi0.zzzz;
@@ -93,19 +84,18 @@ float cnoise(vec3 P) {
 
 const LiquidPlane = () => {
   const materialRef = useRef<THREE.MeshPhysicalMaterial>(null);
-  const shaderRef = useRef<THREE.Shader>(null);
+  const shaderRef = useRef<THREE.WebGLProgramParametersWithUniforms | null>(null);
 
   useFrame((state) => {
-    if (shaderRef.current) {
+    if (shaderRef.current && shaderRef.current.uniforms.uTime) {
       shaderRef.current.uniforms.uTime.value = state.clock.elapsedTime * 0.2;
     }
   });
 
-  const onBeforeCompile = (shader: THREE.Shader) => {
+  const onBeforeCompile = (shader: THREE.WebGLProgramParametersWithUniforms) => {
     shader.uniforms.uTime = { value: 0 };
     shaderRef.current = shader;
 
-    // Inject noise function and time uniform
     shader.vertexShader = shader.vertexShader.replace(
       '#include <common>',
       `
@@ -115,26 +105,21 @@ const LiquidPlane = () => {
       `
     );
 
-    // Displace vertex and calculate new normal using derivatives
     shader.vertexShader = shader.vertexShader.replace(
       '#include <begin_vertex>',
       `
       vec3 transformed = vec3(position);
       
-      // Calculate noise based displacement
       float noiseFreq = 0.5;
       float noiseAmp = 0.8;
       
-      // We displace along the Z axis (upward in our plane)
       float n = cnoise(vec3(transformed.x * noiseFreq, transformed.y * noiseFreq, uTime)) * noiseAmp;
       transformed.z += n;
 
-      // To compute proper normals for the PBR lighting (caustics), we sample neighbors
       float epsilon = 0.01;
       float nX = cnoise(vec3((transformed.x + epsilon) * noiseFreq, transformed.y * noiseFreq, uTime)) * noiseAmp;
       float nY = cnoise(vec3(transformed.x * noiseFreq, (transformed.y + epsilon) * noiseFreq, uTime)) * noiseAmp;
       
-      // Tangent and bitangent
       vec3 tangent = normalize(vec3(epsilon, 0.0, nX - n));
       vec3 bitangent = normalize(vec3(0.0, epsilon, nY - n));
       
@@ -142,7 +127,6 @@ const LiquidPlane = () => {
       `
     );
 
-    // Override the normal for lighting calculations
     shader.vertexShader = shader.vertexShader.replace(
       '#include <defaultnormal_vertex>',
       `
@@ -156,7 +140,6 @@ const LiquidPlane = () => {
 
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
-      {/* High segment count for smooth liquid displacement */}
       <planeGeometry args={[50, 50, 256, 256]} />
       <meshPhysicalMaterial
         ref={materialRef}
@@ -172,11 +155,9 @@ const LiquidPlane = () => {
   );
 };
 
-// Represents a 3D Glass panel synced to a DOM element's position
 const SyncedGlassPanel = ({ bounds }: { bounds: any }) => {
   const { size, viewport } = useThree();
   
-  // Calculate world coordinates from DOM rect
   const x = (bounds.x / size.width) * viewport.width - viewport.width / 2 + (bounds.width / size.width * viewport.width) / 2;
   const y = -(bounds.y / size.height) * viewport.height + viewport.height / 2 - (bounds.height / size.height * viewport.height) / 2;
   
@@ -201,7 +182,6 @@ const SyncedGlassPanel = ({ bounds }: { bounds: any }) => {
         color="#ffffff"
         ior={1.5}
       />
-      {/* Sub-surface LED glow underneath bottom edge */}
       <pointLight position={[0, -height / 2, -0.5]} intensity={5} color="#00ffff" distance={3} />
     </mesh>
   );
@@ -213,7 +193,6 @@ const Scene = () => {
   return (
     <>
       <ambientLight intensity={0.2} />
-      {/* Distant directional light for sharp caustic glints */}
       <directionalLight position={[10, 20, 5]} intensity={2} color="#ffffff" />
       <directionalLight position={[-10, 20, -5]} intensity={1} color="#ff00ff" />
       

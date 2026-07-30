@@ -1,16 +1,10 @@
 "use client";
-//  <a
-//    className="bg-white p-4 text-gray-700 flex items-center gap-2 rounded-full text-[1.25rem] focus:scale-[.115] hover:scale-[1.15] hover:text-gray-950 active:scale-105 transition-all cursor-pointer borderBlack dark:bg-white/10 dark:text-white/60"
-//    href="https://github.com/DylanRigney"
-//    target="_blank"
-//  >
-//    <BsGithub />
-//  </a>;
+
 import { useRef } from "react";
 import { projectsData } from "@/lib/data";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-
+import { GlassCard } from "./ui/GlassCard";
 
 type ProjectProps = (typeof projectsData)[number];
 
@@ -25,28 +19,31 @@ export default function Project({
     target: ref,
     offset: ["0 1", "1.33 1"],
   });
-  const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+
+  // Clean ID for GlassCard registration
+  const cardId = `project-${title.toLowerCase().replace(/[^a-z0-9]/g, '-')}`;
 
   return (
     <motion.div
       ref={ref}
       style={{
-        scale: scaleProgess,
-        opacity: opacityProgess,
+        scale: scaleProgress,
+        opacity: opacityProgress,
       }}
-      className="group mb-3 sm:mb-8 last:mb-0"
+      className="group mb-4 sm:mb-8 last:mb-0 w-full"
     >
-      <section className="bg-gray-100 max-w-[49rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:h-[20rem] hover:bg-gray-200 transition sm:group-even:pl-8 dark:text-white dark:bg-white/10 dark:hover:bg-white/20">
-        <div className="pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[60%] flex flex-col h-full sm:group-even:ml-[18rem]">
-          <h3 className="text-2xl font-semibold">{title}</h3>
-          <p className="mt-2 mb-3 leading-relaxed text-gray-700 dark:text-white/70">
+      <GlassCard id={cardId} className="p-0 overflow-hidden sm:h-[22rem] transition-all duration-300">
+        <div className="pt-6 pb-8 px-6 sm:pl-10 sm:pr-4 sm:pt-10 sm:max-w-[55%] flex flex-col h-full sm:group-even:ml-[18rem]">
+          <h3 className="text-2xl font-bold text-white tracking-tight">{title}</h3>
+          <p className="mt-2 mb-4 leading-relaxed text-gray-300 text-sm sm:text-base">
             {description}
           </p>
-          <ul className="flex flex-wrap mt-4 gap-1 sm:mt-auto">
+          <ul className="flex flex-wrap mt-auto gap-2">
             {tags.map((tag, index) => (
               <li
-                className="bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full dark:text-white/70"
+                className="bg-white/10 border border-white/10 px-3 py-1 text-[0.7rem] uppercase tracking-wider text-cyan-300 rounded-full font-medium"
                 key={index}
               >
                 {tag}
@@ -57,22 +54,24 @@ export default function Project({
 
         <Image
           src={imageUrl}
-          alt="Project I worked on"
+          alt={title}
+          width={500}
+          height={300}
           quality={95}
-          className="absolute hidden sm:block top-7 -right-40 w-[28.25rem] rounded-t-lg shadow-2xl
-        transition 
-        group-hover:scale-[1.04]
-        group-hover:-translate-x-3
-        group-hover:translate-y-3
-        group-hover:-rotate-2
+          className="absolute hidden sm:block top-8 -right-20 w-[26rem] rounded-xl shadow-2xl border border-white/10
+          transition duration-300
+          group-hover:scale-[1.05]
+          group-hover:-translate-x-3
+          group-hover:translate-y-2
+          group-hover:-rotate-1
 
-        group-even:group-hover:translate-x-3
-        group-even:group-hover:translate-y-3
-        group-even:group-hover:rotate-2
+          group-even:group-hover:translate-x-3
+          group-even:group-hover:translate-y-2
+          group-even:group-hover:rotate-1
 
-        group-even:right-[initial] group-even:-left-40"
+          group-even:right-[initial] group-even:-left-20"
         />
-      </section>
+      </GlassCard>
     </motion.div>
   );
 }

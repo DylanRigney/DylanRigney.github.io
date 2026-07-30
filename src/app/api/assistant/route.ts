@@ -2,8 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import OpenAI from "openai";
 import { personas } from "@/lib/data";
 
-// Initialize OpenAI client configured for DeepSeek if API key is provided, 
-// otherwise fallback to OpenAI default.
 const apiKey = process.env.DEEPSEEK_API_KEY || process.env.OPENAI_API_KEY;
 const baseURL = process.env.DEEPSEEK_API_KEY ? "https://api.deepseek.com" : undefined;
 const defaultModel = process.env.DEEPSEEK_API_KEY ? "deepseek-chat" : "gpt-4o-mini";
@@ -45,7 +43,6 @@ export async function POST(req: NextRequest) {
   try {
     const { messages, persona = "claude" } = await req.json();
 
-    // Determine current persona context
     const currentPersona = personas[persona] || personas.claude;
     const initialContextMessage = `[SYSTEM CONTEXT: The user is currently browsing the '${currentPersona.id}' portfolio version. Initializing assistant in Node '${currentPersona.roleTitle}'].`;
 
@@ -54,7 +51,7 @@ export async function POST(req: NextRequest) {
       { role: "system", content: initialContextMessage },
       ...(Array.isArray(messages)
         ? messages.map((m: any) => ({
-            role: m.role === "user" ? "user" : "assistant",
+            role: (m.role === "user" ? "user" : "assistant") as "user" | "assistant",
             content: m.content || "",
           }))
         : []),
