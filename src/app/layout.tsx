@@ -13,8 +13,18 @@ import { LiquidGlassCanvas } from "@/components/ui/LiquidGlassCanvas";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Dylan Rigney | Project Portfolio",
-  description: "Dylan is a full-stack developer with a passion for learning",
+  metadataBase: new URL("https://dylanrigney.github.io"),
+  title: "Dylan Rigney | Agentic AI & Software Engineer",
+  description: "Portfolio of Dylan Rigney. Building agentic AI systems, autonomous workflows, and scalable web applications.",
+  keywords: ["AI Engineer", "Software Engineer", "Next.js", "React", "TypeScript", "LangGraph", "Python"],
+  authors: [{ name: "Dylan Rigney" }],
+  openGraph: {
+    title: "Dylan Rigney | Agentic AI & Software Engineer",
+    description: "Building agentic AI systems, autonomous workflows, and scalable web applications.",
+    siteName: "Dylan Rigney Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

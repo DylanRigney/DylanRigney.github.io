@@ -20,16 +20,16 @@ export default function About() {
       id="about"
       ref={ref}
     >
+      <SectionHeading>About Me</SectionHeading>
       <GlassCard id="about-card" className="p-8">
-        <SectionHeading>About Me</SectionHeading>
-        <p className="mb-4 text-lg text-gray-300 leading-relaxed">
+        <p className="mb-4 text-lg text-[#334155] leading-relaxed">
           {persona.aboutText}
         </p>
-        <div className="mt-6 rounded-xl bg-white/5 p-4 border border-white/10 text-left">
-          <h4 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-2">
+        <div className="mt-6 rounded-xl bg-rose-50/50 p-5 border border-rose-200/50 shadow-sm text-left">
+          <h4 className="text-base font-bold text-[#f43f5e] uppercase tracking-wider mb-2">
             Targeted Role Focus
           </h4>
-          <p className="text-sm text-gray-300 italic">
+          <p className="text-base font-medium text-[#334155]">
             {persona.coverLetterSummary}
           </p>
         </div>

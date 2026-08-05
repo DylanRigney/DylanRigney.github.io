@@ -1,7 +1,7 @@
 
 export default function Footer() {
   return (
-    <footer className="mb-10 px-4 text-center text-gray-500">
+    <footer className="relative z-10 mb-10 pb-10 px-4 text-center text-[#64748b]">
       <small className="mb-2 block text-xs">
         &copy; 2024 Dylan Rigney. All rights reserved.
       </small>

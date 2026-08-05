@@ -34,9 +34,9 @@ export default function Intro() {
               <Image
                 src={headshot}
                 alt="Dylan Portrait"
-                width={140}
-                height={140}
-                className="h-32 w-32 rounded-full border-[0.2rem] border-white/20 object-cover shadow-2xl shadow-cyan-500/20"
+                width={200}
+                height={200}
+                className="h-48 w-48 rounded-3xl border-2 border-[#1e293b]/20 object-cover shadow-[0_0_40px_rgba(244,63,94,0.2)]"
                 priority={true}
               />
             </motion.div>
@@ -48,7 +48,7 @@ export default function Intro() {
         </div>
 
         <motion.h1
-          className="mb-4 mt-6 px-4 text-3xl font-bold tracking-tight text-white sm:text-5xl"
+          className="mb-4 mt-6 px-4 text-3xl font-bold tracking-tight text-[#0f172a] sm:text-5xl"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
         >
@@ -56,7 +56,7 @@ export default function Intro() {
         </motion.h1>
 
         <motion.h2
-          className="mb-6 px-4 text-xl font-medium text-cyan-400 sm:text-2xl"
+          className="mb-6 px-4 text-xl font-medium text-[#f43f5e] sm:text-2xl"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.05 }}
@@ -65,7 +65,7 @@ export default function Intro() {
         </motion.h2>
 
         <motion.p
-          className="mb-10 px-4 text-lg font-normal !leading-[1.6] text-gray-300 sm:text-xl max-w-2xl"
+          className="mb-10 px-4 text-lg font-normal !leading-[1.6] text-[#334155] sm:text-xl max-w-2xl"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
@@ -80,7 +80,7 @@ export default function Intro() {
           transition={{ delay: 0.15 }}
         >
           <a
-            className="group bg-white/10 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-105 hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/10 backdrop-blur-md hover:bg-white/20"
+            className="group bg-[#1e293b]/10 text-[#0f172a] px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-105 hover:scale-105 active:scale-95 transition-all cursor-pointer border border-[#1e293b]/10 backdrop-blur-md hover:bg-[#1e293b]/20"
             href="/RigneyResume.pdf"
             download={true}
           >
@@ -90,7 +90,7 @@ export default function Intro() {
 
           <div className="flex gap-3">
             <a
-              className="bg-white/10 p-4 text-gray-200 flex items-center gap-2 rounded-full text-[1.25rem] hover:scale-110 hover:text-white transition-all cursor-pointer border border-white/10 backdrop-blur-md hover:bg-white/20"
+              className="bg-[#1e293b]/10 p-4 text-[#1e293b] flex items-center gap-2 rounded-full text-[1.25rem] hover:scale-110 hover:text-[#0f172a] transition-all cursor-pointer border border-[#1e293b]/10 backdrop-blur-md hover:bg-[#1e293b]/20"
               href="https://www.linkedin.com/in/dylan-rigney/"
               target="_blank"
               aria-label="LinkedIn Profile"
@@ -99,7 +99,7 @@ export default function Intro() {
             </a>
 
             <a
-              className="bg-white/10 p-4 text-gray-200 flex items-center gap-2 rounded-full text-[1.25rem] hover:scale-110 hover:text-white transition-all cursor-pointer border border-white/10 backdrop-blur-md hover:bg-white/20"
+              className="bg-[#1e293b]/10 p-4 text-[#1e293b] flex items-center gap-2 rounded-full text-[1.25rem] hover:scale-110 hover:text-[#0f172a] transition-all cursor-pointer border border-[#1e293b]/10 backdrop-blur-md hover:bg-[#1e293b]/20"
               href="https://github.com/DylanRigney"
               target="_blank"
               aria-label="GitHub Profile"

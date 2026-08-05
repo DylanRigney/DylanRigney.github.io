@@ -31,7 +31,7 @@
 //     >
 //       <SectionHeading>Contact me</SectionHeading>
 
-//       <p className="text-gray-700 -mt-6 dark:text-white/80">
+//       <p className="text-gray-700 -mt-6 dark:text-[#0f172a]/80">
 //         Please contact me directly at{" "}
 //         <a className="underline" href="mailto:dylantrigney@gmail.com">
 //           dylantrigney@gmail.com

@@ -6,10 +6,10 @@ import { cn } from '@/lib/utils'; // Assuming tailwind-merge util exists
 
 interface GlassCardProps extends React.HTMLAttributes<HTMLDivElement> {
   id: string;
-  children: React.ReactNode;
+  hoverable?: boolean;
 }
 
-export const GlassCard: React.FC<GlassCardProps> = ({ id, children, className, ...props }) => {
+export const GlassCard: React.FC<GlassCardProps> = ({ id, hoverable = false, children, className, ...props }) => {
   const { registerCard, unregisterCard, updateCardBounds } = useWebGLContext();
   const ref = useRef<HTMLDivElement>(null);
   
@@ -53,9 +53,6 @@ export const GlassCard: React.FC<GlassCardProps> = ({ id, children, className, .
     });
     resizeObserver.observe(ref.current);
 
-    // We also need to listen to scroll events to update Y position on screen.
-    // Assuming the window is the scroller. If there is a custom scroll container, 
-    // it would need to be passed down or handled specifically.
     window.addEventListener('scroll', updateBounds, { passive: true });
     window.addEventListener('resize', updateBounds, { passive: true });
 
@@ -72,18 +69,16 @@ export const GlassCard: React.FC<GlassCardProps> = ({ id, children, className, .
       ref={ref}
       id={`glass-card-${id}`}
       className={cn(
-        "relative rounded-2xl border border-white/5 bg-white/5",
-        "transition-colors duration-500 ease-out",
-        isHovered ? "bg-white/10" : "",
+        "relative rounded-2xl border-[1px] border-[#1e293b]/10 bg-white/30 shadow-lg",
+        "transition-all duration-500 ease-out backdrop-blur-md",
+        hoverable && isHovered ? "bg-white/70 backdrop-blur-xl border-white/60 shadow-[0_8px_30px_rgba(0,0,0,0.12)] -translate-y-1" : "",
         className
       )}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => hoverable && setIsHovered(true)}
+      onMouseLeave={() => hoverable && setIsHovered(false)}
       {...props}
     >
-      {/* HTML content goes here. The WebGL canvas in the background will render 
-          the refractive 3D glass and sub-surface glow at this exact position. */}
-      <div className="relative z-10 w-full h-full p-6">
+      <div className="relative z-10 w-full h-full p-6 text-[#1e293b]">
         {children}
       </div>
     </div>

@@ -34,16 +34,16 @@ export default function Project({
       }}
       className="group mb-4 sm:mb-8 last:mb-0 w-full"
     >
-      <GlassCard id={cardId} className="p-0 overflow-hidden sm:h-[22rem] transition-all duration-300">
-        <div className="pt-6 pb-8 px-6 sm:pl-10 sm:pr-4 sm:pt-10 sm:max-w-[55%] flex flex-col h-full sm:group-even:ml-[18rem]">
-          <h3 className="text-2xl font-bold text-white tracking-tight">{title}</h3>
-          <p className="mt-2 mb-4 leading-relaxed text-gray-300 text-sm sm:text-base">
+      <GlassCard id={cardId} hoverable={true} className="p-0 overflow-hidden sm:h-[22rem] group transition-all duration-300">
+        <div className="pt-6 pb-8 px-6 sm:pl-10 sm:pr-4 sm:pt-10 sm:max-w-[55%] flex flex-col h-full sm:group-even:ml-auto">
+          <h3 className="text-2xl font-bold text-[#0f172a] tracking-tight">{title}</h3>
+          <p className="mt-2 mb-4 leading-relaxed text-[#334155] text-sm sm:text-base">
             {description}
           </p>
           <ul className="flex flex-wrap mt-auto gap-2">
             {tags.map((tag, index) => (
               <li
-                className="bg-white/10 border border-white/10 px-3 py-1 text-[0.7rem] uppercase tracking-wider text-cyan-300 rounded-full font-medium"
+                className="bg-[#1e293b]/10 border border-[#1e293b]/10 px-3 py-1 text-[0.7rem] uppercase tracking-wider text-[#fb7185] rounded-full font-medium"
                 key={index}
               >
                 {tag}
@@ -58,7 +58,7 @@ export default function Project({
           width={500}
           height={300}
           quality={95}
-          className="absolute hidden sm:block top-8 -right-20 w-[26rem] rounded-xl shadow-2xl border border-white/10
+          className="absolute hidden sm:block top-8 -right-20 w-[26rem] rounded-xl shadow-2xl border border-[#1e293b]/10
           transition duration-300
           group-hover:scale-[1.05]
           group-hover:-translate-x-3

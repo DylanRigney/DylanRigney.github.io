@@ -17,12 +17,15 @@ interface WebGLContextProps {
   registerCard: (id: string, bounds: DOMRectBounds) => void;
   unregisterCard: (id: string) => void;
   updateCardBounds: (id: string, bounds: DOMRectBounds) => void;
+  ambientMood: string | null;
+  setAmbientMood: (color: string | null) => void;
 }
 
 const WebGLContext = createContext<WebGLContextProps | null>(null);
 
 export const WebGLProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [cards, setCards] = useState<Record<string, DOMRectBounds>>({});
+  const [ambientMood, setAmbientMood] = useState<string | null>(null);
 
   const registerCard = useCallback((id: string, bounds: DOMRectBounds) => {
     setCards((prev) => ({ ...prev, [id]: bounds }));
@@ -53,7 +56,7 @@ export const WebGLProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   }, []);
 
   return (
-    <WebGLContext.Provider value={{ cards, registerCard, unregisterCard, updateCardBounds }}>
+    <WebGLContext.Provider value={{ cards, registerCard, unregisterCard, updateCardBounds, ambientMood, setAmbientMood }}>
       {children}
     </WebGLContext.Provider>
   );

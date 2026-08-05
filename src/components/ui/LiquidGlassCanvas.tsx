@@ -139,12 +139,12 @@ const LiquidPlane = () => {
   };
 
   return (
-    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -2, 0]}>
+    <mesh rotation={[0, 0, 0]} position={[0, 0, -5]}>
       <planeGeometry args={[50, 50, 256, 256]} />
       <meshPhysicalMaterial
         ref={materialRef}
-        color="#050608"
-        emissive="#010204"
+        color="#0a0c12"
+        emissive="#030406"
         roughness={0.05}
         metalness={0.9}
         clearcoat={1.0}
@@ -164,37 +164,47 @@ const SyncedGlassPanel = ({ bounds }: { bounds: any }) => {
   const width = (bounds.width / size.width) * viewport.width;
   const height = (bounds.height / size.height) * viewport.height;
 
+  const idStr = String(bounds.id || "").toLowerCase();
+  let color = "#00ffff"; // cyan
+  if (idStr.includes("about")) color = "#ff00ff"; // magenta
+  else if (idStr.includes("experience")) color = "#3b82f6"; // blue
+  else if (idStr.includes("projects")) color = "#8b5cf6"; // violet
+  else if (idStr.includes("skills")) color = "#10b981"; // emerald
+
   return (
     <mesh position={[x, y, 0]}>
       <planeGeometry args={[width, height]} />
       <MeshTransmissionMaterial
         backside
         samples={4}
-        thickness={0.5}
-        chromaticAberration={0.025}
+        thickness={2.0}
+        chromaticAberration={0.05}
         anisotropy={0.1}
         distortion={0.1}
         distortionScale={0.1}
         temporalDistortion={0.0}
         clearcoat={1}
-        attenuationDistance={0.5}
+        attenuationDistance={1.0}
         attenuationColor="#ffffff"
         color="#ffffff"
-        ior={1.5}
+        ior={1.6}
       />
-      <pointLight position={[0, -height / 2, -0.5]} intensity={5} color="#00ffff" distance={3} />
+      <pointLight position={[0, -height / 2 + 0.5, -1]} intensity={20} color={color} distance={15} decay={1.5} />
     </mesh>
   );
 };
 
 const Scene = () => {
-  const { cards } = useWebGLContext();
+  const { cards, ambientMood } = useWebGLContext();
+
+  const mainLightColor = ambientMood || "#ffffff";
+  const accentLightColor = ambientMood || "#ff00ff";
 
   return (
     <>
-      <ambientLight intensity={0.2} />
-      <directionalLight position={[10, 20, 5]} intensity={2} color="#ffffff" />
-      <directionalLight position={[-10, 20, -5]} intensity={1} color="#ff00ff" />
+      <ambientLight intensity={0.4} />
+      <directionalLight position={[10, 10, 15]} intensity={3} color={mainLightColor} />
+      <directionalLight position={[-10, -10, 15]} intensity={2} color={accentLightColor} />
       
       <Environment preset="city" />
 

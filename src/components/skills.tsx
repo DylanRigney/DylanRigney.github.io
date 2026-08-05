@@ -32,9 +32,9 @@ export default function Skills() {
       ref={ref}
       className="mb-28 max-w-[53rem] scroll-mt-28 text-center sm:mb-40 w-full"
     >
-      <GlassCard id="skills-card" className="p-8">
-        <SectionHeading>Skills & Technologies</SectionHeading>
-        <ul className="flex flex-wrap justify-center gap-3 text-sm sm:text-base text-gray-200">
+      <SectionHeading>Skills & Technologies</SectionHeading>
+      <GlassCard id="skills-card" hoverable={true} className="p-8">
+        <ul className="flex flex-wrap justify-center gap-3 text-sm sm:text-base text-[#1e293b]">
           {skillsData.map((skill, index) => {
             const isHighlighted = persona.highlightedSkills.some(
               (h) => h.toLowerCase().includes(skill.toLowerCase()) || skill.toLowerCase().includes(h.toLowerCase())
@@ -44,8 +44,8 @@ export default function Skills() {
               <motion.li
                 className={`rounded-xl px-4 py-2 border transition-all duration-300 ${
                   isHighlighted
-                    ? "bg-cyan-500/20 border-cyan-400/50 text-cyan-200 shadow-lg shadow-cyan-500/10 font-semibold"
-                    : "bg-white/5 border-white/10 text-gray-300"
+                    ? "bg-rose-500/10 border-rose-400/30 text-[#fecdd3] shadow-lg shadow-rose-500/10 font-semibold"
+                    : "bg-[#1e293b]/5 border-[#1e293b]/10 text-[#334155]"
                 }`}
                 key={index}
                 variants={fadeInAnimationVariants}
