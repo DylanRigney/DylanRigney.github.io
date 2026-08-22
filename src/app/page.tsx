@@ -13,7 +13,6 @@ export default function Home() {
   return (
     <PersonaProvider personaId="ai">
       <LayoutShifter>
-        <KanagawaBg />
         <main className="flex flex-col items-center px-4 w-full max-w-5xl mx-auto">
           <Intro />
           <SectionDivider />

@@ -27,30 +27,30 @@ export default function Experience() {
               <VerticalTimelineElement
                 visible
                 contentStyle={{
-                  background: "rgba(248, 250, 252, 0.75)",
-                  boxShadow: "inset 0 0 20px rgba(30, 41, 59, 0.05), 0 8px 32px rgba(0, 0, 0, 0.1)",
-                  border: "1.5px solid rgba(30, 41, 59, 0.2)",
-                  backdropFilter: "blur(12px)",
+                  background: "rgba(255, 255, 255, 0.55)",
+                  boxShadow: "0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 8px 16px -4px rgba(15, 23, 42, 0.06), inset 0 1.5px 1px rgba(255, 255, 255, 0.8), inset 0 -1px 1px rgba(15, 23, 42, 0.05)",
+                  border: "1.5px solid rgba(255, 255, 255, 0.7)",
+                  backdropFilter: "blur(16px)",
                   textAlign: "left",
                   padding: "1.5rem 2rem",
-                  borderRadius: "1rem"
+                  borderRadius: "1.25rem"
                 }}
                 contentArrowStyle={{
-                  borderRight: "0.4rem solid rgba(30, 41, 59, 0.2)",
+                  borderRight: "0.4rem solid rgba(255, 255, 255, 0.7)",
                 }}
                 date={item.date}
-                dateClassName="text-[#f43f5e] font-medium ml-4 mr-4"
+                dateClassName="text-[#d05459] font-semibold ml-4 mr-4"
                 icon={item.icon}
                 iconStyle={{
-                  background: "rgba(248, 250, 252, 0.95)",
-                  boxShadow: "0 0 15px rgba(244, 63, 94, 0.2)",
-                  border: "1.5px solid rgba(30, 41, 59, 0.2)",
+                  background: "rgba(255, 255, 255, 0.9)",
+                  boxShadow: "0 10px 25px -5px rgba(15, 23, 42, 0.15), 0 0 15px rgba(186, 230, 253, 0.3), inset 0 1.5px 1px rgba(255, 255, 255, 0.9)",
+                  border: "1.5px solid rgba(255, 255, 255, 0.8)",
                   color: "rgba(15, 23, 42, 0.9)",
                   fontSize: "1.5rem",
                 }}
               >
                 <h3 className="font-bold text-[#0f172a] tracking-wide">{item.title}</h3>
-                <p className="font-medium !mt-0 text-[#f43f5e]/80">{item.location}</p>
+                <p className="font-medium !mt-0 text-[#d05459]/80">{item.location}</p>
                 <p className="!mt-4 !font-normal text-[#334155] !leading-relaxed">
                   {item.description}
                 </p>

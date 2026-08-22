@@ -69,16 +69,22 @@ export const GlassCard: React.FC<GlassCardProps> = ({ id, hoverable = false, chi
       ref={ref}
       id={`glass-card-${id}`}
       className={cn(
-        "relative rounded-2xl border-[1px] border-[#1e293b]/10 bg-white/30 shadow-lg",
-        "transition-all duration-500 ease-out backdrop-blur-md",
-        hoverable && isHovered ? "bg-white/70 backdrop-blur-xl border-white/60 shadow-[0_8px_30px_rgba(0,0,0,0.12)] -translate-y-1" : "",
+        "relative rounded-3xl border-[1.5px] border-white/60 bg-white/40 shadow-[0_20px_50px_-10px_rgba(15,23,42,0.16),_0_8px_20px_-6px_rgba(15,23,42,0.08),_0_0_20px_rgba(186,230,253,0.12)]",
+        "transition-all duration-500 ease-out backdrop-blur-xl overflow-hidden",
+        hoverable && "hover:-translate-y-1.5 hover:shadow-[0_30px_65px_-12px_rgba(15,23,42,0.24),_0_12px_30px_-8px_rgba(15,23,42,0.12),_0_0_30px_rgba(186,230,253,0.22)] hover:border-white/80",
         className
       )}
       onMouseEnter={() => hoverable && setIsHovered(true)}
       onMouseLeave={() => hoverable && setIsHovered(false)}
       {...props}
     >
-      <div className="relative z-10 w-full h-full p-6 text-[#1e293b]">
+      {/* Top glass bevel catchlight & bottom physical edge rim */}
+      <div className="absolute inset-0 rounded-3xl shadow-[inset_0_1.5px_1px_rgba(255,255,255,0.75),inset_0_-1.5px_1px_rgba(15,23,42,0.06)] pointer-events-none z-10" />
+
+      {/* Subtle diagonal glass light reflection sheen */}
+      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-white/30 via-white/5 to-black/[0.02] pointer-events-none z-10" />
+
+      <div className="relative z-20 w-full h-full p-6 text-[#1e293b]">
         {children}
       </div>
     </div>

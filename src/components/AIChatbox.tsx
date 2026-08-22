@@ -106,7 +106,7 @@ export default function AIChatBox() {
   return (
     <div
       className={cn(
-        "fixed top-0 bottom-0 z-[105] flex flex-col transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] w-[100vw] sm:w-[450px] overflow-hidden isolate",
+        "fixed top-0 bottom-0 z-[1000] flex flex-col transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] w-[100vw] sm:w-[450px] overflow-hidden isolate",
         "right-0 bg-slate-900/30 backdrop-blur-[16px] border-l-[6px] border-slate-950 shadow-[-20px_0_40px_rgba(0,0,0,0.4)]",
         isChatOpen ? "translate-x-0 opacity-100" : "translate-x-full opacity-0 pointer-events-none"
       )}

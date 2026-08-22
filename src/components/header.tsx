@@ -15,7 +15,7 @@ export default function Header() {
   return (
     <header className="z-[999] relative">
       <motion.div
-        className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border border-white/50 bg-gradient-to-r from-white/70 via-white/40 to-white/70 shadow-[0_4px_30px_rgba(30,58,138,0.05)] backdrop-blur-xl sm:top-6 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+        className="fixed top-0 left-1/2 h-[4.5rem] w-full rounded-none border-[1.5px] border-white/80 bg-gradient-to-r from-white/80 via-white/50 to-white/80 shadow-[0_15px_35px_-5px_rgba(15,23,42,0.12),_0_0_20px_rgba(186,230,253,0.2),_inset_0_1.5px_1px_rgba(255,255,255,0.9),_inset_0_-1px_1px_rgba(15,23,42,0.05)] backdrop-blur-xl sm:top-6 sm:h-[3.25rem] sm:w-[36rem] sm:rounded-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
         initial={{ y: -100, x: "-50%", opacity: 0 }}
         animate={{ y: 0, x: isChatOpen ? "calc(-50% - 225px)" : "-50%", opacity: 1 }}
       ></motion.div>

@@ -23,7 +23,7 @@ export default function Intro() {
     >
       <div className="flex flex-col xl:flex-row items-center justify-center w-full gap-4">
         {/* Main Intro Panel */}
-        <GlassCard id="intro-card" className="flex flex-col items-center justify-center p-8 w-full max-w-[50rem]">
+        <GlassCard id="intro-card" className="flex flex-col items-center justify-center p-8 sm:pt-14 sm:pb-[75px] sm:px-12 w-full max-w-[50rem]">
           <div className="flex flex-col items-center justify-center gap-6">
             <div className="relative">
               <motion.div
@@ -36,7 +36,7 @@ export default function Intro() {
                   alt="Dylan Portrait"
                   width={200}
                   height={200}
-                  className="h-48 w-48 rounded-3xl border-2 border-[#1e293b]/20 object-cover shadow-[0_0_40px_rgba(244,63,94,0.2)]"
+                  className="h-48 w-48 rounded-3xl border-[2.5px] border-white/80 object-cover shadow-[0_15px_35px_-5px_rgba(15,23,42,0.18),_0_0_25px_rgba(186,230,253,0.25)]"
                   priority={true}
                 />
               </motion.div>
@@ -52,7 +52,7 @@ export default function Intro() {
           </motion.h1>
 
           <motion.h2
-            className="mb-6 px-4 text-xl font-medium text-[#f43f5e] sm:text-2xl"
+            className="mb-6 px-4 text-xl font-semibold text-[#d05459] sm:text-2xl tracking-wide"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05 }}
@@ -76,7 +76,7 @@ export default function Intro() {
             transition={{ delay: 0.15 }}
           >
             <a
-              className="group bg-[#1e293b]/10 text-[#0f172a] px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-105 hover:scale-105 active:scale-95 transition-all cursor-pointer border border-[#1e293b]/10 backdrop-blur-md hover:bg-[#1e293b]/20"
+              className="group relative bg-white/60 text-[#0f172a] px-7 py-3.5 flex items-center gap-2 rounded-full outline-none focus:scale-105 hover:scale-105 active:scale-95 transition-all cursor-pointer border-[1.5px] border-white/80 backdrop-blur-xl shadow-[0_10px_25px_-5px_rgba(15,23,42,0.1),_inset_0_1.5px_1px_rgba(255,255,255,0.9)] hover:bg-white/80 hover:shadow-[0_15px_30px_-5px_rgba(15,23,42,0.15),_0_0_15px_rgba(186,230,253,0.2)]"
               href="/RigneyResume.pdf"
               download={true}
             >
@@ -86,7 +86,7 @@ export default function Intro() {
 
             <div className="flex gap-3">
               <a
-                className="bg-[#1e293b]/10 p-4 text-[#1e293b] flex items-center gap-2 rounded-full text-[1.25rem] hover:scale-110 hover:text-[#0f172a] transition-all cursor-pointer border border-[#1e293b]/10 backdrop-blur-md hover:bg-[#1e293b]/20"
+                className="bg-white/60 p-4 text-[#1e293b] flex items-center gap-2 rounded-full text-[1.25rem] hover:scale-110 hover:text-[#0f172a] transition-all cursor-pointer border-[1.5px] border-white/80 backdrop-blur-xl shadow-[0_10px_25px_-5px_rgba(15,23,42,0.1),_inset_0_1.5px_1px_rgba(255,255,255,0.9)] hover:bg-white/80 hover:shadow-[0_15px_30px_-5px_rgba(15,23,42,0.15)]"
                 href="https://www.linkedin.com/in/dylan-rigney/"
                 target="_blank"
                 aria-label="LinkedIn Profile"
@@ -95,7 +95,7 @@ export default function Intro() {
               </a>
 
               <a
-                className="bg-[#1e293b]/10 p-4 text-[#1e293b] flex items-center gap-2 rounded-full text-[1.25rem] hover:scale-110 hover:text-[#0f172a] transition-all cursor-pointer border border-[#1e293b]/10 backdrop-blur-md hover:bg-[#1e293b]/20"
+                className="bg-white/60 p-4 text-[#1e293b] flex items-center gap-2 rounded-full text-[1.25rem] hover:scale-110 hover:text-[#0f172a] transition-all cursor-pointer border-[1.5px] border-white/80 backdrop-blur-xl shadow-[0_10px_25px_-5px_rgba(15,23,42,0.1),_inset_0_1.5px_1px_rgba(255,255,255,0.9)] hover:bg-white/80 hover:shadow-[0_15px_30px_-5px_rgba(15,23,42,0.15)]"
                 href="https://github.com/DylanRigney"
                 target="_blank"
                 aria-label="GitHub Profile"

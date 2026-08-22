@@ -21,7 +21,7 @@ export default function LayoutShifter({ children }: { children: React.ReactNode 
       {/* Click-away overlay to close the panel intuitively */}
       {isChatOpen && (
         <div 
-          className="absolute inset-0 z-[998] cursor-pointer" 
+          className="fixed inset-0 z-[990] cursor-pointer" 
           onClick={() => setIsChatOpen(false)}
           title="Click to close AI panel"
         />

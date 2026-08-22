@@ -43,7 +43,7 @@ export default function Project({
           <ul className="flex flex-wrap mt-auto gap-2">
             {tags.map((tag, index) => (
               <li
-                className="bg-[#1e293b]/10 border border-[#1e293b]/10 px-3 py-1 text-[0.7rem] uppercase tracking-wider text-[#fb7185] rounded-full font-medium"
+                className="bg-white/60 border border-white/80 px-3 py-1 text-[0.7rem] uppercase tracking-wider text-[#d05459] rounded-full font-semibold shadow-[0_2px_6px_rgba(15,23,42,0.04),_inset_0_1px_0.5px_rgba(255,255,255,0.9)] backdrop-blur-sm"
                 key={index}
               >
                 {tag}
@@ -58,7 +58,7 @@ export default function Project({
           width={500}
           height={300}
           quality={95}
-          className="absolute hidden sm:block top-8 -right-20 w-[26rem] rounded-xl shadow-2xl border border-[#1e293b]/10
+          className="absolute hidden sm:block top-8 -right-20 w-[26rem] rounded-2xl shadow-[0_20px_40px_-10px_rgba(15,23,42,0.25),_0_0_20px_rgba(186,230,253,0.2)] border-[1.5px] border-white/80
           transition duration-300
           group-hover:scale-[1.05]
           group-hover:-translate-x-3

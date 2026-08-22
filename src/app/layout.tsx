@@ -11,6 +11,8 @@ import { WebGLProvider } from "@/context/WebGLContext";
 import { LiquidGlassCanvas } from "@/components/ui/LiquidGlassCanvas";
 import { ChatLayoutProvider } from "@/context/ChatLayoutContext";
 
+import KanagawaBg from "./components/backgrounds/KanagawaBg";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -36,10 +38,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.className} bg-[#050608] text-gray-50 relative pt-28 sm:pt-36 selection:bg-cyan-500/30`}
+        className={`${inter.className} text-gray-900 relative pt-28 sm:pt-36 selection:bg-cyan-500/30 min-h-screen`}
       >
+        <KanagawaBg />
         <WebGLProvider>
-          <LiquidGlassCanvas />
           <ThemeContextProvider>
             <ChatLayoutProvider>
               <ActiveSectionContextProvider>

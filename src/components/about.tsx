@@ -25,9 +25,9 @@ export default function About() {
         <p className="mb-4 text-lg text-[#334155] leading-relaxed">
           {persona.aboutText}
         </p>
-        <div className="mt-6 rounded-xl bg-rose-50/50 p-5 border border-rose-200/50 shadow-sm text-left">
-          <h4 className="text-base font-bold text-[#f43f5e] uppercase tracking-wider mb-2">
-            Targeted Role Focus
+        <div className="mt-6 rounded-2xl bg-gradient-to-br from-white/75 to-[#d05459]/10 p-6 border-[1.5px] border-white/90 shadow-[0_10px_25px_-5px_rgba(208,84,89,0.08),_inset_0_1.5px_1px_rgba(255,255,255,0.95)] backdrop-blur-md text-left">
+          <h4 className="text-base font-bold text-[#d05459] uppercase tracking-wider mb-2">
+            Agentic AI Engineering Focus
           </h4>
           <p className="text-base font-medium text-[#334155]">
             {persona.coverLetterSummary}
