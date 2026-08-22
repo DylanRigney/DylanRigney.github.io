@@ -9,6 +9,7 @@ import { Toaster } from "react-hot-toast";
 import ThemeContextProvider from "../context/theme-context";
 import { WebGLProvider } from "@/context/WebGLContext";
 import { LiquidGlassCanvas } from "@/components/ui/LiquidGlassCanvas";
+import { ChatLayoutProvider } from "@/context/ChatLayoutContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,14 +41,16 @@ export default function RootLayout({
         <WebGLProvider>
           <LiquidGlassCanvas />
           <ThemeContextProvider>
-            <ActiveSectionContextProvider>
-              <Header />
-              <div className="relative z-10 w-full">
-                {children}
-              </div>
-              <Footer />
-              <Toaster position="top-right" />
-            </ActiveSectionContextProvider>
+            <ChatLayoutProvider>
+              <ActiveSectionContextProvider>
+                <Header />
+                <div className="relative z-10 w-full">
+                  {children}
+                </div>
+                <Footer />
+                <Toaster position="top-right" />
+              </ActiveSectionContextProvider>
+            </ChatLayoutProvider>
           </ThemeContextProvider>
         </WebGLProvider>
       </body>

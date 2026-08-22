@@ -7,6 +7,7 @@ import Experience from "@/components/experience";
 import { PersonaProvider } from "@/context/PersonaContext";
 import { personas } from "@/lib/data";
 import { notFound } from "next/navigation";
+import AIChatCardExperience from "@/components/AIChatCardExperience";
 
 export function generateStaticParams() {
   return Object.keys(personas).map((persona) => ({
@@ -35,6 +36,7 @@ export default function PersonaPage({
         <Skills />
         <Experience />
       </main>
+      <AIChatCardExperience />
     </PersonaProvider>
   );
 }
