@@ -16,14 +16,14 @@ import KanagawaBg from "./components/backgrounds/KanagawaBg";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://dylanrigney.github.io"),
-  title: "Dylan Rigney | Agentic AI & Software Engineer",
-  description: "Portfolio of Dylan Rigney. Building agentic AI systems, autonomous workflows, and scalable web applications.",
-  keywords: ["AI Engineer", "Software Engineer", "Next.js", "React", "TypeScript", "LangGraph", "Python"],
+  metadataBase: new URL("https://dylanrigney.vercel.app"),
+  title: "Dylan Rigney | Software Developer & Builder",
+  description: "Portfolio of Dylan Rigney. Building full-stack software, robust backend services, and modern web applications with Python and TypeScript.",
+  keywords: ["Software Developer", "Python", "FastAPI", "Next.js", "React", "TypeScript", "SQLAlchemy", "LangGraph"],
   authors: [{ name: "Dylan Rigney" }],
   openGraph: {
-    title: "Dylan Rigney | Agentic AI & Software Engineer",
-    description: "Building agentic AI systems, autonomous workflows, and scalable web applications.",
+    title: "Dylan Rigney | Software Developer & Builder",
+    description: "Building full-stack software, robust backend services, and modern web applications with Python and TypeScript.",
     siteName: "Dylan Rigney Portfolio",
     locale: "en_US",
     type: "website",
