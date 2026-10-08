@@ -6,8 +6,6 @@ import { Sparkles, X, Send } from "lucide-react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { usePersona } from "@/context/PersonaContext";
-import { useWebGLContext } from "@/context/WebGLContext";
-import { ProjectArchitectureWidget, RecruiterConnectWidget, TourBadgeWidget } from "./AgentWidgets";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { useChatLayout } from "@/context/ChatLayoutContext";
@@ -16,13 +14,11 @@ type Message = {
   id: string;
   role: "user" | "assistant";
   content: string;
-  tool_calls?: any[];
 };
 
 export default function AIChatBox() {
   const { isChatOpen, setIsChatOpen, activeSide } = useChatLayout();
   const { personaId, persona } = usePersona();
-  const { setAmbientMood } = useWebGLContext();
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -59,18 +55,6 @@ export default function AIChatBox() {
 
       const data = await res.json();
       setMessages((prev) => [...prev, data]);
-
-      if (data.tool_calls) {
-        data.tool_calls.forEach((tc: any) => {
-          if (tc.function.name === "set_ambient_mood") {
-            const args = JSON.parse(tc.function.arguments);
-            setAmbientMood(args.color);
-          } else if (tc.function.name === "start_guided_tour") {
-            const args = JSON.parse(tc.function.arguments);
-            document.getElementById(args.section)?.scrollIntoView({ behavior: "smooth" });
-          }
-        });
-      }
     } catch (err) {
       console.error(err);
       setMessages((prev) => [
@@ -91,15 +75,15 @@ export default function AIChatBox() {
   const presetChips = [
     {
       icon: "💡",
-      text: "Tell me about Dylan's portfolio projects.",
+      text: "Tell me about Dylan's projects, especially the Agentic Prediction Copilot.",
     },
     {
       icon: "🛠️",
-      text: "What are Dylan's core technical skills?",
+      text: "What are Dylan's core technical skills in Python, FastAPI, Pydantic, and Full-Stack development?",
     },
     {
       icon: "🎯",
-      text: "Why should our team hire Dylan?",
+      text: "Why is Dylan a strong fit for a Software Developer role?",
     },
   ];
 
@@ -172,19 +156,6 @@ export default function AIChatBox() {
                 )}
               </div>
             )}
-            {m.tool_calls && m.tool_calls.map((tc: any) => {
-              if (tc.function.name === "spotlight_project_architecture") {
-                const args = JSON.parse(tc.function.arguments);
-                return <div className="mt-2" key={tc.id}><ProjectArchitectureWidget projectId={args.projectId} /></div>;
-              }
-              if (tc.function.name === "request_recruiter_connect") {
-                return <div className="mt-2" key={tc.id}><RecruiterConnectWidget onComplete={() => setAmbientMood("#10b981")} /></div>;
-              }
-              if (tc.function.name === "start_guided_tour") {
-                return <div className="mt-2" key={tc.id}><TourBadgeWidget /></div>;
-              }
-              return null;
-            })}
           </div>
         ))}
 

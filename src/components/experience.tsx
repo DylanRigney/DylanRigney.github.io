@@ -12,9 +12,18 @@ import { useSectionInView } from "@/lib/hooks";
 import { useTheme } from "../context/theme-context";
 
 import { GlassCard } from "./ui/GlassCard";
+import { usePersona } from "@/context/PersonaContext";
 
 export default function Experience() {
   const { ref } = useSectionInView("Experience");
+  const { persona } = usePersona();
+
+  const filteredExperiences = experiencesData.filter((item) => {
+    if (persona?.hideDegree && item.title.toLowerCase().includes("bs in computer science")) {
+      return false;
+    }
+    return true;
+  });
 
   return (
     <section id="experience" ref={ref} className="scroll-mt-28 mb-28 sm:mb-40 w-full max-w-[60rem]">
@@ -22,7 +31,7 @@ export default function Experience() {
       
       <GlassCard id="experience-card" className="p-8 mt-8">
         <VerticalTimeline lineColor="rgba(30, 41, 59, 0.2)">
-          {experiencesData.map((item, index) => (
+          {filteredExperiences.map((item, index) => (
             <React.Fragment key={index}>
               <VerticalTimelineElement
                 visible

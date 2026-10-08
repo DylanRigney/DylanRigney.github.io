@@ -18,11 +18,29 @@ export interface PersonaConfig {
   heroHighlight: string;
   aboutText: string;
   coverLetterSummary: string;
+  focusHeading?: string;
   highlightedSkills: string[];
   systemPromptRole: string;
+  hideDegree?: boolean;
 }
 
+const softwareDeveloperConfig: PersonaConfig = {
+  id: "software-developer",
+  roleTitle: "Software Developer",
+  tagline: "Building scalable backend services, robust REST APIs, and full-stack software with Python.",
+  heroHighlight: "Software developer specializing in Python, FastAPI, and full-stack engineering. Focused on clean architecture, robust data validation with Pydantic & SQLAlchemy, and high-performance API design—leveraging AI as a force multiplier for development velocity.",
+  aboutText: "I am a software developer with a strong foundation in building clean, maintainable backend services, RESTful APIs, and full-stack web applications. My core stack centers on Python (FastAPI, Pydantic, SQLAlchemy), complemented by enterprise experience in Java/Spring Boot and modern TypeScript/React frontends. Prior to software engineering full-time, I served as a Technical Instructor and Program Lead at Revature in Reston, VA, where I built enterprise applications and mentored dozens of junior engineers in Agile/Scrum methodologies, database design, and clean code practices. I treat software craftsmanship with high rigor—emphasizing structured data modeling, automated testing, and thoughtful system architecture. I view AI and agentic systems as powerful multipliers that elevate developer productivity, automated testing, and debugging. I'm excited to bring my builder mindset, strong work ethic, and rapid learning velocity to the Catalyte Software Development Apprenticeship at Bloomberg in Arlington, VA.",
+  coverLetterSummary: "Tailored for Catalyte / Bloomberg Software Development Apprenticeship (Arlington, VA): Highlights strong skills in Python, FastAPI, Pydantic, SQLAlchemy, PostgreSQL, RESTful APIs, Agile/Scrum, and enterprise full-stack development.",
+  focusHeading: "Python & Software Development Focus",
+  highlightedSkills: ["Python", "FastAPI", "Pydantic", "SQLAlchemy"],
+  systemPromptRole: "Candidate for Software Developer roles, specifically the Catalyte Software Development Apprenticeship with Bloomberg in Arlington, VA. Emphasize software engineering fundamentals, Python backend development (FastAPI, Pydantic, SQLAlchemy), RESTful API design, Agile/Scrum, clean code, learning velocity, and local alignment in Northern Virginia.",
+  hideDegree: true,
+};
+
 export const personas: Record<string, PersonaConfig> = {
+  "software-developer": softwareDeveloperConfig,
+  "software-development": { ...softwareDeveloperConfig, id: "software-development" },
+  swe: { ...softwareDeveloperConfig, id: "swe" },
   ai: {
     id: "ai",
     roleTitle: "AI Engineer",
@@ -30,6 +48,7 @@ export const personas: Record<string, PersonaConfig> = {
     heroHighlight: "AI Engineer and systems thinker focused on orchestrating intelligent agents and automated workflows to build practical, AI-driven solutions.",
     aboutText: "I am an AI engineer driven by the intersection of agentic systems and human capability. Before diving deep into software, I spent years teaching yoga and instructing developers in software engineering fundamentals. Those experiences fundamentally shaped how I approach systems thinking, patience, and clear technical communication. In engineering, I focus on architecting autonomous pipelines, RAG systems, and agentic workflows that reduce friction and solve real-world problems. When I step away from the keyboard, I stay active and grounded by practicing yoga, exploring the outdoors, learning Spanish, and constantly seeking out new ideas to refine my craft.",
     coverLetterSummary: "Focus on agentic AI engineering, autonomous workflows, LLM integration, and practical intelligent solutions.",
+    focusHeading: "Agentic AI Engineering Focus",
     highlightedSkills: ["Python", "TypeScript", "LangGraph", "RAG Pipelines", "FastAPI", "Prompt Engineering"],
     systemPromptRole: "Candidate for AI Engineer roles. Emphasize agentic systems, autonomous workflows, LangGraph, and real-world shipped features."
   },
@@ -40,6 +59,7 @@ export const personas: Record<string, PersonaConfig> = {
     heroHighlight: "Passionate about guiding the vision of a project from an abstract idea into a concrete solution that users love.",
     aboutText: "My greatest strength is not writing the code itself, but the strategic and creative process of deciding what to build and why it matters. I pivot my technical engineering background and non-traditional teaching experience into building products that amplify human creativity. I treat programs like products: analyze data, identify friction, iterate, and measure improvement.",
     coverLetterSummary: "Tailored for Product Management: Emphasize product iteration, friction analysis, program design, and human-AI collaboration.",
+    focusHeading: "Product Management Focus",
     highlightedSkills: ["AI-as-copilot workflows", "Product iteration", "A/B testing mindset", "Stakeholder collaboration", "Python", "TypeScript"],
     systemPromptRole: "Candidate for Product Manager roles. Highlight the pivot from engineer to PM, focus on user experience, program design, and using AI as a partner to human creativity."
   },
@@ -50,6 +70,7 @@ export const personas: Record<string, PersonaConfig> = {
     heroHighlight: "Combines systems thinking with a track record of teaching, scoping, and shipping applied AI solutions.",
     aboutText: "I am a builder passionate about embedding inside a mission-driven organization to build solutions that last. With hands-on experience engineering agentic systems and teaching technical skills to diverse audiences, my goal is to automate workflows and make complex things usable.",
     coverLetterSummary: "Tailored for entry-level, apprenticeship, and fellowship roles: Emphasize mission alignment, applied AI tooling, and communication/enablement.",
+    focusHeading: "Applied AI Development Focus",
     highlightedSkills: ["Python", "TypeScript", "LangGraph", "Prompt Engineering", "Technical Instruction"],
     systemPromptRole: "Candidate for Applied AI roles (Entry-level/Apprenticeship/Fellowship). Lead with potential, mission alignment, learning velocity, and teaching background."
   },
@@ -60,18 +81,9 @@ export const personas: Record<string, PersonaConfig> = {
     heroHighlight: "Bridging the gap between complex AI systems and user capability through expert instruction and curriculum design.",
     aboutText: "I leverage my background in full-stack development, agentic AI, and yoga instruction to design systems and curriculum that amplify human capability. Having taught full-stack engineering to diverse cohorts and designed pilot training programs, I know how to identify friction points and iterate content to boost engagement.",
     coverLetterSummary: "Tailored for Teaching-first roles: Emphasize curriculum design, technical instruction, AI fluency training, and student mentorship.",
+    focusHeading: "Technical Training Focus",
     highlightedSkills: ["Technical Instruction", "Curriculum Design", "AI Fluency Training", "Python", "TypeScript", "React"],
     systemPromptRole: "Candidate for Teaching + AI roles. Emphasize teaching leadership, curriculum design, student mentorship, and clear technical communication."
-  },
-  swe: {
-    id: "swe",
-    roleTitle: "Software Engineer",
-    tagline: "Crafting High-Performance Web Applications, Robust APIs, and Scalable Microservices.",
-    heroHighlight: "Passionate about clean architecture, test-driven development, and fluid user experiences.",
-    aboutText: "I am a software engineer with a track record of delivering clean, maintainable enterprise software and robust APIs. My non-traditional path from teaching yoga into tech has given me a deep appreciation for user experience, communication, and systems thinking. I'm excited to bring my builder mindset to an entry-level or apprenticeship role.",
-    coverLetterSummary: "Tailored for Software Engineer internships/apprenticeships/fellowships: Highlights strong fundamentals in TypeScript, React, Next.js, and system architecture.",
-    highlightedSkills: ["TypeScript", "React", "Next.js", "Java", "Spring Boot", "PostgreSQL", "RESTful APIs"],
-    systemPromptRole: "Candidate for Software Engineer roles (Entry-level/Apprenticeship/Fellowship). Emphasize software engineering fundamentals, learning velocity, and robust web development."
   }
 };
 
@@ -79,14 +91,14 @@ export const experiencesData = [
   {
     title: "AI Engineering Intern",
     location: "Yoonee AI / Remote",
-    description: "Engineered scalable RAG pipelines, developed autonomous document processing workflows, and built interactive dashboards for data-driven analytics.",
+    description: "Engineered scalable Python RAG pipelines, developed automated document processing workflows with natural language querying, and built interactive analytics dashboards.",
     icon: React.createElement(FaReact),
     date: "Jan 2026 - Apr 2026",
   },
   {
     title: "LLM Evaluation Engineer (Freelance)",
     location: "Outlier AI / Remote",
-    description: "Evaluated AI-generated code in Python and Java, assessing reasoning quality, tool use, and safety.",
+    description: "Evaluated production code generation in Python and Java, assessing algorithmic correctness, edge-case resilience, tool execution, and code safety.",
     icon: React.createElement(CgWorkAlt),
     date: "Nov 2023 - Oct 2025",
   },
@@ -95,19 +107,19 @@ export const experiencesData = [
     location: "University of the People",
     description: "Pursuing core algorithms, data structures, and system design. President's List.",
     icon: React.createElement(LuGraduationCap),
-    date: "Sep 2023 - Expected Sep 2026",
+    date: "Sep 2023 - Expected Dec 2026",
   },
   {
     title: "Technical Instructor / Program Lead",
     location: "Revature / Reston, VA",
-    description: "Employed in a high-velocity agile environment; built enterprise web apps and trained dozens of junior developers in modern full-stack development.",
+    description: "Operated in high-velocity Agile/Scrum teams using Jira; engineered enterprise web applications and led full-stack software training programs for dozens of junior engineers.",
     icon: React.createElement(CgWorkAlt),
     date: "Dec 2021 - Aug 2023",
   },
   {
     title: "Full Stack Java Developer Trainee",
     location: "Revature / Reston, VA",
-    description: "Completed intensive bootcamp. Hired directly as developer and instructor due to top performance.",
+    description: "Completed intensive software engineering bootcamp. Hired directly as developer and instructor due to top academic and technical performance.",
     icon: React.createElement(LuGraduationCap),
     date: "2021",
   },
@@ -116,55 +128,51 @@ export const experiencesData = [
 export const projectsData = [
   {
     title: "Agentic Prediction Copilot",
-    description: "AI-Powered Forecasting System with agentic decision loops, structured querying, and generative UI based on pipeline context.",
-    tags: ["Next.js", "TypeScript", "Python", "LangGraph", "FastAPI", "Generative UI", "SQLite"],
+    description: "Full-stack AI forecasting system featuring autonomous decision loops, robust Pydantic data validation, FastAPI REST services, and SQLAlchemy persistence.",
+    tags: ["Python", "FastAPI", "Pydantic", "SQLAlchemy", "LangGraph", "TypeScript", "Next.js", "SQLite"],
     imageUrl: "/project_sage.jpg",
-  },
-  {
-    title: "Adaptive Fitness & Rehab Agent",
-    description: "An autonomous agent built on OpenClaw that dynamically adapts workout and rehabilitation protocols. It features a fully automated pipeline where users simply provide input, and the agent orchestrates task reasoning and MySQL state management to deliver a customized plan.",
-    tags: ["OpenClaw", "Python", "MySQL", "State Management", "Prompt Engineering"],
-    imageUrl: "/project_ai_assistant.jpg",
   },
   {
     title: "Autonomous Task Agent",
-    description: "Agentic Workflow Orchestrator running as a Windows service. Highly modular for a variety of different tasks and workflows, featuring robust error handling and monitoring.",
-    tags: ["Python", "LangGraph", "Google ADK", "Docker", "RESTful APIs"],
+    description: "Resilient workflow orchestrator running as a background service on Linux and Windows, featuring automated error handling, Docker containerization, and RESTful API integrations.",
+    tags: ["Python", "FastAPI", "Docker", "Linux/Bash", "RESTful APIs", "LangGraph"],
     imageUrl: "/project_trms.jpg",
-  },
-  {
-    title: "Autonomous Web Experience & Generative UI",
-    description: "Engineered a dynamic, highly-interactive web platform featuring real-time Generative UI and in-context AI orchestration. The system utilizes autonomous agents to control ambient WebGL aesthetics, manage state, and guide users through personalized architectural walkthroughs.",
-    tags: ["Next.js", "TypeScript", "Agent Architecture", "Prompt Optimization"],
-    imageUrl: "/project_sage.jpg",
   },
   {
     title: "Tuition Reimbursement System",
-    description: "A full-stack enterprise web app allowing automated multi-tier approval routing for corporate tuition reimbursement.",
-    tags: ["Java", "Spring Boot", "Hibernate", "Javalin", "PostgreSQL"],
+    description: "Enterprise full-stack application built in an Agile/Scrum team, automating multi-tier approval routing with role-based access control and PostgreSQL persistence.",
+    tags: ["Java", "Spring Boot", "PostgreSQL", "Agile/Scrum", "RESTful APIs", "Hibernate"],
     imageUrl: "/project_trms.jpg",
+  },
+  {
+    title: "Adaptive Fitness & Rehab Agent",
+    description: "Autonomous planning service in Python that dynamically adapts rehabilitation and workout protocols using task reasoning and MySQL state persistence.",
+    tags: ["Python", "MySQL", "RESTful APIs", "OpenClaw", "State Management"],
+    imageUrl: "/project_ai_assistant.jpg",
   },
 ] as const;
 
 export const skillsData = [
   "Python",
+  "FastAPI",
+  "Pydantic",
+  "SQLAlchemy",
+  "PostgreSQL",
+  "MySQL",
+  "RESTful APIs",
+  "Linux/Bash",
+  "Git",
+  "Docker",
+  "Agile/Scrum",
+  "Jira",
   "TypeScript",
   "JavaScript",
   "React",
   "Next.js",
-  "LangGraph",
-  "Google ADK",
-  "LLM Evaluation",
-  "Prompt Engineering",
-  "FastAPI",
-  "RESTful APIs",
   "Java",
   "Spring Boot",
   "Hibernate",
-  "Javalin",
-  "PostgreSQL",
-  "MySQL",
-  "Docker",
-  "Git",
+  "LangGraph",
+  "LLM Evaluation",
   "Tailwind CSS",
 ] as const;
