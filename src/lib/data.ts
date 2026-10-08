@@ -29,11 +29,11 @@ const softwareDeveloperConfig: PersonaConfig = {
   roleTitle: "Software Developer",
   tagline: "Building scalable backend services, robust REST APIs, and full-stack software with Python.",
   heroHighlight: "Software developer specializing in Python, FastAPI, and full-stack engineering. Focused on clean architecture, robust data validation with Pydantic & SQLAlchemy, and high-performance API design—leveraging AI as a force multiplier for development velocity.",
-  aboutText: "I am a software developer with a strong foundation in building clean, maintainable backend services, RESTful APIs, and full-stack web applications. My core stack centers on Python (FastAPI, Pydantic, SQLAlchemy), complemented by enterprise experience in Java/Spring Boot and modern TypeScript/React frontends. Prior to software engineering full-time, I served as a Technical Instructor and Program Lead at Revature in Reston, VA, where I built enterprise applications and mentored dozens of junior engineers in Agile/Scrum methodologies, database design, and clean code practices. I treat software craftsmanship with high rigor—emphasizing structured data modeling, automated testing, and thoughtful system architecture. I view AI and agentic systems as powerful multipliers that elevate developer productivity, automated testing, and debugging. I'm excited to bring my builder mindset, strong work ethic, and rapid learning velocity to the Catalyte Software Development Apprenticeship at Bloomberg in Arlington, VA.",
-  coverLetterSummary: "Tailored for Catalyte / Bloomberg Software Development Apprenticeship (Arlington, VA): Highlights strong skills in Python, FastAPI, Pydantic, SQLAlchemy, PostgreSQL, RESTful APIs, Agile/Scrum, and enterprise full-stack development.",
-  focusHeading: "Python & Software Development Focus",
+  aboutText: "I am a software developer focused on building clean, maintainable backend services, RESTful APIs, and full-stack web applications with Python. My core stack centers on FastAPI, Pydantic, and SQLAlchemy, backed by experience in relational databases and modern TypeScript/React frontends. With a background instructing software engineering and mentoring developers, I bring strong technical communication, disciplined debugging instincts, and a builder mindset to every codebase. I treat modern AI tools as pragmatic accelerators for testing, code quality, and development velocity.",
+  coverLetterSummary: "Python backend services, FastAPI, schema validation with Pydantic & SQLAlchemy, RESTful API design, and scalable full-stack web applications.",
+  focusHeading: "Software Development with Python",
   highlightedSkills: ["Python", "FastAPI", "Pydantic", "SQLAlchemy"],
-  systemPromptRole: "Candidate for Software Developer roles, specifically the Catalyte Software Development Apprenticeship with Bloomberg in Arlington, VA. Emphasize software engineering fundamentals, Python backend development (FastAPI, Pydantic, SQLAlchemy), RESTful API design, Agile/Scrum, clean code, learning velocity, and local alignment in Northern Virginia.",
+  systemPromptRole: "Candidate for Software Developer roles specializing in Python backend engineering and full-stack web development. Emphasize software craftsmanship, Python (FastAPI, Pydantic, SQLAlchemy), RESTful API design, clean code, learning velocity, and agile collaboration.",
   hideDegree: true,
 };
 
@@ -112,7 +112,7 @@ export const experiencesData = [
   {
     title: "Technical Instructor / Program Lead",
     location: "Revature / Reston, VA",
-    description: "Operated in high-velocity Agile/Scrum teams using Jira; engineered enterprise web applications and led full-stack software training programs for dozens of junior engineers.",
+    description: "Engineered enterprise web applications and led technical training programs for junior developers across full-stack systems, relational databases, and clean code standards.",
     icon: React.createElement(CgWorkAlt),
     date: "Dec 2021 - Aug 2023",
   },
@@ -128,20 +128,20 @@ export const experiencesData = [
 export const projectsData = [
   {
     title: "Agentic Prediction Copilot",
-    description: "Full-stack AI forecasting system featuring autonomous decision loops, robust Pydantic data validation, FastAPI REST services, and SQLAlchemy persistence.",
+    description: "Full-stack forecasting platform featuring autonomous decision loops, Pydantic schema validation, FastAPI backend services, and SQLAlchemy ORM persistence.",
     tags: ["Python", "FastAPI", "Pydantic", "SQLAlchemy", "LangGraph", "TypeScript", "Next.js", "SQLite"],
     imageUrl: "/project_sage.jpg",
   },
   {
     title: "Autonomous Task Agent",
-    description: "Resilient workflow orchestrator running as a background service on Linux and Windows, featuring automated error handling, Docker containerization, and RESTful API integrations.",
-    tags: ["Python", "FastAPI", "Docker", "Linux/Bash", "RESTful APIs", "LangGraph"],
+    description: "Resilient workflow orchestrator running as a background service, featuring automated error handling, Docker containerization, and RESTful API integrations.",
+    tags: ["Python", "FastAPI", "Docker", "RESTful APIs", "LangGraph"],
     imageUrl: "/project_trms.jpg",
   },
   {
     title: "Tuition Reimbursement System",
-    description: "Enterprise full-stack application built in an Agile/Scrum team, automating multi-tier approval routing with role-based access control and PostgreSQL persistence.",
-    tags: ["Java", "Spring Boot", "PostgreSQL", "Agile/Scrum", "RESTful APIs", "Hibernate"],
+    description: "Enterprise full-stack web application automating multi-tier approval routing for corporate reimbursements, featuring relational schema design, role-based access control, and PostgreSQL persistence.",
+    tags: ["Java", "Spring Boot", "PostgreSQL", "Hibernate", "RESTful APIs"],
     imageUrl: "/project_trms.jpg",
   },
   {

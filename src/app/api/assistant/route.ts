@@ -20,7 +20,7 @@ Your goal is to answer questions from recruiters and hiring managers in an accur
 --- CANDIDATE SUMMARY & PORTFOLIO DETAILS ---
 Candidate: Dylan Rigney
 Key Background & Experience:
-- Technical Instructor / Program Lead at Revature (Reston, VA): Operated in high-velocity Agile/Scrum teams using Jira; engineered enterprise web applications and trained dozens of junior developers in full-stack engineering (Java, Spring Boot, TypeScript, React, SQL, Git). Led pilot training programs and refined curriculum based on student friction data.
+- Technical Instructor / Program Lead at Revature: Engineered enterprise web applications and trained dozens of junior developers in full-stack engineering (Java, Spring Boot, TypeScript, React, SQL, Git). Led technical instruction and curriculum design.
 - AI Engineering Intern at Yoonee AI: Engineered scalable Python backend and RAG pipelines, developed autonomous document processing workflows with natural language extraction, and built interactive dashboards for data-driven analytics.
 - LLM Evaluation Engineer (Freelance) at Outlier AI: Evaluated production code in Python and Java, assessing algorithmic correctness, edge-case resilience, tool execution, and code safety.
 - Non-traditional background: Former yoga teacher and fitness instructor who brings exceptional systems thinking, patience, user empathy, and clear technical communication to software engineering.
@@ -34,10 +34,10 @@ Featured Portfolio Projects:
      • LangGraph Orchestration: Multi-step agentic loop architecture enabling iterative reasoning, state-driven workflow transitions, error recovery, and context-aware execution.
      • Modern Frontend: Built in Next.js and TypeScript, displaying responsive prediction results, contextual state feedback, and clean data visualizations.
 2. Tuition Reimbursement System (Enterprise Full-Stack Application):
-   - Tech Stack: Java, Spring Boot, Hibernate, Javalin, PostgreSQL, Agile/Scrum.
-   - Core Highlights: Full-stack corporate application built with an Agile team, automating multi-tier approval routing for tuition reimbursement. Features relational schema design, role-based access control, transaction management, and automated business workflows.
+   - Tech Stack: Java, Spring Boot, Hibernate, Javalin, PostgreSQL.
+   - Core Highlights: Enterprise full-stack web application automating multi-tier approval routing for corporate reimbursements. Features relational schema design, role-based access control, transaction management, and automated business workflows.
 3. Autonomous Task Agent:
-   - Tech Stack: Python, FastAPI, Docker, Linux/Bash, RESTful APIs, LangGraph.
+   - Tech Stack: Python, FastAPI, Docker, RESTful APIs, LangGraph.
    - Core Highlights: Resilient background orchestrator running as a continuous service for scheduling, executing, and monitoring complex task pipelines with automated error handling and logging.
 4. Adaptive Fitness & Rehab Agent:
    - Tech Stack: Python, MySQL, RESTful APIs, OpenClaw, State Management.
@@ -68,9 +68,9 @@ export async function POST(req: NextRequest) {
       : [];
 
     const currentPersona = personas[persona] || personas["software-developer"] || personas.ai;
-    const initialContextMessage = `[SYSTEM CONTEXT: The user is currently browsing the '${currentPersona.id}' portfolio route. Role: '${currentPersona.roleTitle}'].\n[ROLE GUIDELINE: ${currentPersona.systemPromptRole}]${
+    const initialContextMessage = `[ROLE CONTEXT: Dylan Rigney is being represented for ${currentPersona.roleTitle} roles. ${currentPersona.systemPromptRole}].${
       currentPersona.hideDegree
-        ? "\n[EDUCATION NOTE: For this candidate profile, focus on Dylan's technical training, intensive enterprise development at Revature (Reston, VA), and real-world project contributions. Do not emphasize or bring up university degrees unless explicitly queried.]"
+        ? "\n[NOTE: Focus on technical capabilities, professional software development experience, and shipped projects.]"
         : ""
     }`;
 
